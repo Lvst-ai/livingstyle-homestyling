@@ -2,16 +2,16 @@
 
 /* สีและตัวอักษรของแบรนด์ — แก้ที่นี่ที่เดียว ทั้งหน้าจะเปลี่ยนตาม */
 @theme {
-  --color-cream: #f7f3ec;
-  --color-ivory: #fcfaf6;
-  --color-sand: #ece5d8;
-  --color-forest: #1f3a2e;
-  --color-forest-soft: #2d4c3d;
-  --color-gold: #b89a62;
-  --color-gold-soft: #d9c7a1;
-  --color-ink: #2a2a25;
-  --color-muted: #6c6a60;
-  --color-line: #06c755;
+  --color-bg: #0b0b0b;
+  --color-surface: #141414;
+  --color-surface-2: #1c1c1b;
+  --color-edge: #2e2e2c;
+  --color-fg: #f4f4f1;
+  --color-muted: #a3a39d;
+  --color-green: #89c13a;
+  --color-green-soft: #a2d35c;
+  --color-yellow: #d9bb5f;
+  --color-yellow-soft: #ead48f;
 
   --font-sans: var(--font-prompt), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-questrial), var(--font-prompt), sans-serif;
@@ -37,11 +37,12 @@
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  background: var(--color-cream);
-  color: var(--color-ink);
+  background: var(--color-bg);
+  color: var(--color-fg);
   font-family: var(--font-sans);
   font-weight: 300;
 }

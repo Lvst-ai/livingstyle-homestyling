@@ -98,13 +98,10 @@ const faqs = [
 export default function Home() {
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-sand/80 bg-cream/90 backdrop-blur">
+      <header className="sticky top-0 z-30 border-b border-edge bg-bg/90 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
-          <a href="#top" className="flex flex-col leading-none">
-            <span className="font-display text-xl tracking-[0.3em] text-forest">LVST</span>
-            <span className="mt-1 font-display text-[0.625rem] tracking-[0.25em] text-muted">
-              LIVING STYLE STUDIO
-            </span>
+          <a href="#top" aria-label="Living Style Studio">
+            <Logo className="h-8 w-auto md:h-9" />
           </a>
           <LineButton size="sm" />
         </div>
@@ -116,7 +113,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pt-14 pb-20 md:grid-cols-[1.1fr_0.9fr] md:px-8 md:pt-24 md:pb-28">
             <div>
               <Eyebrow>HOMESTYLING · BANGKOK</Eyebrow>
-              <h1 className="mt-5 text-hero font-normal text-forest">
+              <h1 className="mt-5 text-hero font-normal text-fg">
                 บ้านที่ลงตัว
                 <br />
                 ในแบบที่เป็นคุณ
@@ -127,13 +124,13 @@ export default function Home() {
               </p>
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <LineButton />
-                <a href="#price" className="text-sm text-forest underline decoration-gold/60 underline-offset-8 hover:decoration-gold">
+                <a href="#price" className="text-sm text-fg underline decoration-yellow/60 underline-offset-8 hover:decoration-yellow">
                   ดูราคาเริ่มต้น
                 </a>
               </div>
             </div>
             <div className="relative mx-auto w-full max-w-sm md:max-w-none">
-              <div aria-hidden className="absolute -right-3 -bottom-3 h-full w-full rounded-t-full border border-gold-soft" />
+              <div aria-hidden className="absolute -right-3 -bottom-3 h-full w-full rounded-t-full border border-yellow/50" />
               <Photo
                 src={heroImg}
                 alt="Homestylist ของ Living Style Studio พูดคุยแนวทางการแต่งบ้านกับเจ้าของบ้าน"
@@ -147,14 +144,14 @@ export default function Home() {
         </section>
 
         {/* จุดเด่น 3 ข้อ */}
-        <section className="bg-ivory py-20 md:py-28">
+        <section className="bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <SectionHead eyebrow="WHY LVST" title="ความต่างที่คุณสัมผัสได้" />
             <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
               {highlights.map((h) => (
                 <div key={h.title}>
                   <Photo src={h.image} alt={h.alt} className="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
-                  <h3 className="mt-6 text-lg font-normal text-forest">{h.title}</h3>
+                  <h3 className="mt-6 text-lg font-normal text-fg">{h.title}</h3>
                   <p className="mt-3 text-body text-muted">{h.body}</p>
                 </div>
               ))}
@@ -167,29 +164,29 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <SectionHead eyebrow="SERVICE & PRICE" title="บริการ Homestyling" />
             <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10">
-              <div className="rounded-sm bg-forest p-8 text-ivory md:p-10">
-                <p className="font-display text-eyebrow text-gold-soft">STARTING FROM</p>
-                <p className="mt-4 text-sm text-ivory/70">งบประมาณเริ่มต้นประมาณ</p>
+              <div className="rounded-sm border border-edge bg-surface-2 p-8 text-fg md:p-10">
+                <p className="font-display text-eyebrow text-yellow-soft">STARTING FROM</p>
+                <p className="mt-4 text-sm text-fg/70">งบประมาณเริ่มต้นประมาณ</p>
                 <p className="mt-1 text-4xl font-light tracking-wide md:text-5xl">
                   150,000 <span className="text-lg">บาท</span>
                 </p>
-                <dl className="mt-8 space-y-3 border-t border-ivory/15 pt-6 text-sm">
+                <dl className="mt-8 space-y-3 border-t border-fg/15 pt-6 text-sm">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-ivory/70">ค่าบริการ Homestyling</dt>
+                    <dt className="text-fg/70">ค่าบริการ Homestyling</dt>
                     <dd>30,000 บาท</dd>
                   </div>
                   <div className="flex justify-between gap-4">
-                    <dt className="text-ivory/70">ค่าสินค้า (คิดตามชิ้นที่ใช้จริง)</dt>
+                    <dt className="text-fg/70">ค่าสินค้า (คิดตามชิ้นที่ใช้จริง)</dt>
                     <dd>120,000 บาท</dd>
                   </div>
                 </dl>
-                <p className="mt-6 text-sm leading-relaxed text-ivory/70">
+                <p className="mt-6 text-sm leading-relaxed text-fg/70">
                   ปรับงบได้ตามขนาดและความต้องการของพื้นที่
                 </p>
-                <ul className="mt-8 space-y-3 border-t border-ivory/15 pt-6">
+                <ul className="mt-8 space-y-3 border-t border-fg/15 pt-6">
                   {included.map((item) => (
                     <li key={item} className="flex gap-3 text-sm leading-relaxed">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-soft" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green" />
                       {item}
                     </li>
                   ))}
@@ -197,13 +194,13 @@ export default function Home() {
               </div>
 
               <div>
-                <h3 className="font-display text-eyebrow text-gold">HOW WE WORK</h3>
+                <h3 className="font-display text-eyebrow text-yellow">HOW WE WORK</h3>
                 <ol className="mt-6">
                   {steps.map((s, i) => (
-                    <li key={s.name} className="flex gap-5 border-b border-sand py-5 first:pt-0">
-                      <span className="font-display text-2xl text-gold">0{i + 1}</span>
+                    <li key={s.name} className="flex gap-5 border-b border-edge py-5 first:pt-0">
+                      <span className="font-display text-2xl text-yellow">0{i + 1}</span>
                       <div>
-                        <p className="font-normal text-forest">{s.name}</p>
+                        <p className="font-normal text-fg">{s.name}</p>
                         <p className="mt-1 text-sm leading-relaxed text-muted">{s.body}</p>
                       </div>
                     </li>
@@ -218,9 +215,9 @@ export default function Home() {
         </section>
 
         {/* ปุ่มกลางหน้า */}
-        <section className="bg-sand/60 py-16 md:py-20">
+        <section className="bg-surface-2 py-16 md:py-20">
           <div className="mx-auto max-w-3xl px-5 text-center md:px-8">
-            <p className="text-xl text-forest md:text-2xl">ส่งภาพพื้นที่ของคุณมาให้เราดู</p>
+            <p className="text-xl text-fg md:text-2xl">ส่งภาพพื้นที่ของคุณมาให้เราดู</p>
             <p className="mt-3 text-body text-muted">
               Homestylist จะแนะนำแนวทางเบื้องต้นให้ โดยไม่มีค่าใช้จ่าย
             </p>
@@ -231,7 +228,7 @@ export default function Home() {
         </section>
 
         {/* ก่อน / หลัง */}
-        <section className="bg-ivory py-20 md:py-28">
+        <section className="bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <SectionHead eyebrow="BEFORE / AFTER" title="บ้านเดิม บรรยากาศใหม่" />
             <p className="mt-4 max-w-xl text-body text-muted">
@@ -244,7 +241,7 @@ export default function Home() {
               ].map((b) => (
                 <figure key={b.label}>
                   <Photo src={b.img} alt={b.alt} className="aspect-[9/16]" sizes="(min-width: 768px) 384px, 50vw" />
-                  <figcaption className="mt-3 font-display text-eyebrow text-gold">{b.label}</figcaption>
+                  <figcaption className="mt-3 font-display text-eyebrow text-yellow">{b.label}</figcaption>
                 </figure>
               ))}
             </div>
@@ -257,13 +254,13 @@ export default function Home() {
             <SectionHead eyebrow="CLIENT WORDS" title="เสียงจากเจ้าของบ้าน" />
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {reviews.map((r) => (
-                <figure key={r.name} className="rounded-sm border border-sand bg-ivory p-7 md:p-9">
-                  <span aria-hidden className="font-display text-4xl leading-none text-gold-soft">
+                <figure key={r.name} className="rounded-sm border border-edge bg-surface p-7 md:p-9">
+                  <span aria-hidden className="font-display text-4xl leading-none text-yellow-soft">
                     &ldquo;
                   </span>
-                  <blockquote className="mt-2 text-body text-ink">{r.quote}</blockquote>
+                  <blockquote className="mt-2 text-body text-fg/90">{r.quote}</blockquote>
                   <figcaption className="mt-5 text-sm">
-                    <span className="text-forest">{r.name}</span>
+                    <span className="text-fg">{r.name}</span>
                     <span className="ml-2 font-display text-xs tracking-widest text-muted uppercase">
                       {r.role}
                     </span>
@@ -275,17 +272,17 @@ export default function Home() {
         </section>
 
         {/* คำถามที่พบบ่อย */}
-        <section className="bg-ivory py-20 md:py-28">
+        <section className="bg-surface py-20 md:py-28">
           <div className="mx-auto max-w-3xl px-5 md:px-8">
             <SectionHead eyebrow="FAQ" title="คำถามที่พบบ่อย" />
-            <div className="mt-10 border-t border-sand">
+            <div className="mt-10 border-t border-edge">
               {faqs.map((f) => (
-                <details key={f.q} className="group border-b border-sand">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-forest">
+                <details key={f.q} className="group border-b border-edge">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-fg">
                     <span>{f.q}</span>
                     <span
                       aria-hidden
-                      className="text-xl font-light text-gold transition-transform group-open:rotate-45"
+                      className="text-xl font-light text-yellow transition-transform group-open:rotate-45"
                     >
                       +
                     </span>
@@ -298,43 +295,43 @@ export default function Home() {
         </section>
 
         {/* ติดต่อเรา */}
-        <section id="contact" className="bg-forest py-20 text-ivory md:py-28">
+        <section id="contact" className="bg-surface-2 py-20 text-fg md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <div className="grid gap-12 md:grid-cols-2">
               <div>
-                <p className="font-display text-eyebrow text-gold-soft">CONTACT</p>
+                <p className="font-display text-eyebrow text-yellow-soft">CONTACT</p>
                 <h2 className="mt-4 text-title font-normal">เริ่มจากบทสนทนาสั้น ๆ</h2>
-                <p className="mt-4 max-w-md text-body text-ivory/75">
+                <p className="mt-4 max-w-md text-body text-fg/75">
                   ส่งรูปบ้านและบอกสไตล์ที่ชอบ แล้วเราจะนัดพูดคุยแนวทางที่เหมาะกับคุณที่สุด
                 </p>
                 <div className="mt-8">
-                  <LineButton tone="light" />
+                  <LineButton />
                 </div>
               </div>
 
               <ul className="space-y-5 text-sm md:pt-10">
                 <ContactRow label="LINE">
-                  <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-soft">
+                  <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="hover:text-yellow-soft">
                     @Livingstyle
                   </a>
                 </ContactRow>
                 <ContactRow label="โทร">
                   {PHONES.map((p, i) => (
                     <span key={p.href}>
-                      {i > 0 && <span className="mx-2 text-ivory/40">/</span>}
-                      <a href={p.href} className="hover:text-gold-soft">
+                      {i > 0 && <span className="mx-2 text-fg/40">/</span>}
+                      <a href={p.href} className="hover:text-yellow-soft">
                         {p.label}
                       </a>
                     </span>
                   ))}
                 </ContactRow>
                 <ContactRow label="Facebook">
-                  <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-soft">
+                  <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="hover:text-yellow-soft">
                     LivingstyleStudio
                   </a>
                 </ContactRow>
                 <ContactRow label="Instagram">
-                  <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-gold-soft">
+                  <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-yellow-soft">
                     livingstylestudio
                   </a>
                 </ContactRow>
@@ -347,9 +344,9 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-forest text-ivory/60">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t border-ivory/10 px-5 py-8 text-xs md:flex-row md:justify-between md:px-8">
-          <p className="font-display tracking-[0.2em]">LIVINGSTYLE STUDIO CO., LTD.</p>
+      <footer className="bg-surface-2 text-fg/60">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t border-fg/10 px-5 py-8 text-xs md:flex-row md:justify-between md:px-8">
+          <Logo className="h-7 w-auto" />
           <p>© 2026 Living Style Studio · Homestyling กรุงเทพฯ</p>
         </div>
       </footer>
@@ -357,14 +354,11 @@ export default function Home() {
   );
 }
 
-function LineButton({ size = "md", tone = "dark" }: { size?: "sm" | "md"; tone?: "dark" | "light" }) {
+function LineButton({ size = "md" }: { size?: "sm" | "md" }) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full font-normal whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
+    "inline-flex items-center justify-center gap-2 rounded-full font-normal whitespace-nowrap transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green";
   const sizes = size === "sm" ? "px-4 py-2 text-sm" : "px-7 py-3.5 text-base";
-  const tones =
-    tone === "light"
-      ? "bg-ivory text-forest hover:bg-gold-soft"
-      : "bg-forest text-ivory hover:bg-forest-soft";
+  const tones = "bg-green text-bg hover:bg-green-soft";
   return (
     <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className={`${base} ${sizes} ${tones}`}>
       <IconChat />
@@ -374,22 +368,22 @@ function LineButton({ size = "md", tone = "dark" }: { size?: "sm" | "md"; tone?:
 }
 
 function Eyebrow({ children }: { children: ReactNode }) {
-  return <p className="font-display text-eyebrow text-gold">{children}</p>;
+  return <p className="font-display text-eyebrow text-yellow">{children}</p>;
 }
 
 function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
       <Eyebrow>{eyebrow}</Eyebrow>
-      <h2 className="mt-3 text-title font-normal text-forest">{title}</h2>
+      <h2 className="mt-3 text-title font-normal text-fg">{title}</h2>
     </div>
   );
 }
 
 function ContactRow({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <li className="grid grid-cols-[6rem_1fr] gap-4 border-b border-ivory/10 pb-5">
-      <span className="text-ivory/50">{label}</span>
+    <li className="grid grid-cols-[6rem_1fr] gap-4 border-b border-fg/10 pb-5">
+      <span className="text-fg/50">{label}</span>
       <span className="leading-relaxed">{children}</span>
     </li>
   );
@@ -419,7 +413,7 @@ function Photo({
   eager?: boolean;
 }) {
   return (
-    <div className={`relative overflow-hidden bg-sand ${className}`}>
+    <div className={`relative overflow-hidden bg-surface-2 ${className}`}>
       <Image
         src={src}
         alt={alt}
@@ -430,5 +424,18 @@ function Photo({
         {...(eager ? { loading: "eager" as const, fetchPriority: "high" as const } : {})}
       />
     </div>
+  );
+}
+
+function Logo({ className = "" }: { className?: string }) {
+  return (
+    <Image
+      src="/images/logo-livingstyle.svg"
+      alt="Living Style Studio"
+      width={150}
+      height={40}
+      unoptimized
+      className={className}
+    />
   );
 }
