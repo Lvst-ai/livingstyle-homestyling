@@ -1,4 +1,11 @@
+import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
+import afterImg from "@/public/images/after.webp";
+import beforeImg from "@/public/images/before.webp";
+import heroImg from "@/public/images/hero-consult.jpg";
+import adviceImg from "@/public/images/homestylist-advice.webp";
+import livingImg from "@/public/images/styled-living.jpg";
+import stylingDayImg from "@/public/images/styling-day.webp";
 
 const LINE_URL = "https://line.me/R/ti/p/@livingstyle";
 const PHONES = [
@@ -12,17 +19,20 @@ const highlights = [
   {
     title: "คัดสรรทุกชิ้นด้วยรสนิยม",
     body: "Homestylist เลือกของตกแต่ง ดอกไม้ และต้นไม้ให้เข้ากับพื้นที่และตัวตนของคุณ ไม่ใช่แค่ซื้อมาวาง",
-    icon: <IconLeaf />,
+    image: livingImg,
+    alt: "ห้องนั่งเล่นที่ตกแต่งเสร็จ ชั้นวางจัดของตกแต่งและต้นไม้",
   },
   {
     title: "เห็นแนวทางก่อนตัดสินใจ",
     body: "เข้าสำรวจและทดลองจัดวางที่หน้างานจริง กำหนด Mood & Tone ร่วมกันก่อนเริ่มตกแต่ง",
-    icon: <IconEye />,
+    image: adviceImg,
+    alt: "Homestylist ให้คำแนะนำแนวทางการตกแต่งกับลูกค้า",
   },
   {
     title: "ดูแลครบ จบในวันเดียว",
     body: "ทีมงานนำของไปจัดถึงที่ เก็บรายละเอียดและพื้นที่ให้เรียบร้อย คุณไม่ต้องประสานงานเอง",
-    icon: <IconHome />,
+    image: stylingDayImg,
+    alt: "ทีมงานจัดวางของตกแต่งในวัน Styling Day",
   },
 ];
 
@@ -122,7 +132,17 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <HeroArt />
+            <div className="relative mx-auto w-full max-w-sm md:max-w-none">
+              <div aria-hidden className="absolute -right-3 -bottom-3 h-full w-full rounded-t-full border border-gold-soft" />
+              <Photo
+                src={heroImg}
+                alt="Homestylist ของ Living Style Studio พูดคุยแนวทางการแต่งบ้านกับเจ้าของบ้าน"
+                className="aspect-[4/5] rounded-t-full"
+                sizes="(min-width: 768px) 45vw, 100vw"
+                position="object-[60%_center]"
+                eager
+              />
+            </div>
           </div>
         </section>
 
@@ -130,11 +150,11 @@ export default function Home() {
         <section className="bg-ivory py-20 md:py-28">
           <div className="mx-auto max-w-6xl px-5 md:px-8">
             <SectionHead eyebrow="WHY LVST" title="ความต่างที่คุณสัมผัสได้" />
-            <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+            <div className="mt-12 grid gap-12 md:grid-cols-3 md:gap-8">
               {highlights.map((h) => (
-                <div key={h.title} className="border-t border-gold-soft pt-8">
-                  <div className="text-gold">{h.icon}</div>
-                  <h3 className="mt-5 text-lg font-normal text-forest">{h.title}</h3>
+                <div key={h.title}>
+                  <Photo src={h.image} alt={h.alt} className="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
+                  <h3 className="mt-6 text-lg font-normal text-forest">{h.title}</h3>
                   <p className="mt-3 text-body text-muted">{h.body}</p>
                 </div>
               ))}
@@ -206,6 +226,27 @@ export default function Home() {
             </p>
             <div className="mt-8 flex justify-center">
               <LineButton />
+            </div>
+          </div>
+        </section>
+
+        {/* ก่อน / หลัง */}
+        <section className="bg-ivory py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-5 md:px-8">
+            <SectionHead eyebrow="BEFORE / AFTER" title="บ้านเดิม บรรยากาศใหม่" />
+            <p className="mt-4 max-w-xl text-body text-muted">
+              ไม่ต้องรีโนเวท แค่เลือกและจัดวางให้ถูกที่ บ้านก็พร้อมอยู่ได้ในวันเดียว
+            </p>
+            <div className="mt-10 grid max-w-3xl grid-cols-2 gap-3 md:gap-6">
+              {[
+                { img: beforeImg, label: "BEFORE", alt: "พื้นที่ว่างก่อนใช้บริการ Homestyling" },
+                { img: afterImg, label: "AFTER", alt: "พื้นที่เดียวกันหลังตกแต่งโดย Living Style Studio" },
+              ].map((b) => (
+                <figure key={b.label}>
+                  <Photo src={b.img} alt={b.alt} className="aspect-[9/16]" sizes="(min-width: 768px) 384px, 50vw" />
+                  <figcaption className="mt-3 font-display text-eyebrow text-gold">{b.label}</figcaption>
+                </figure>
+              ))}
             </div>
           </div>
         </section>
@@ -354,26 +395,6 @@ function ContactRow({ label, children }: { label: string; children: ReactNode })
   );
 }
 
-/* ภาพประกอบส่วนหัว: รูปทรงโค้งแทนรูปถ่าย */
-function HeroArt() {
-  return (
-    <div aria-hidden className="relative mx-auto aspect-[4/5] w-full max-w-[15rem] md:max-w-none">
-      <div className="absolute inset-x-6 top-0 bottom-10 rounded-t-full bg-sand" />
-      <div className="absolute inset-x-14 top-10 bottom-10 rounded-t-full bg-gradient-to-b from-ivory to-sand/40" />
-      <div className="absolute right-2 bottom-24 h-28 w-28 rounded-full bg-gold-soft/50" />
-      <div className="absolute bottom-10 left-1/2 h-40 w-px -translate-x-1/2 bg-forest/30" />
-      <svg viewBox="0 0 120 160" className="absolute bottom-10 left-1/2 h-48 w-36 -translate-x-1/2 text-forest">
-        <path d="M60 160 C60 120 60 90 60 40" stroke="currentColor" strokeWidth="1.2" fill="none" />
-        <path d="M60 110 C40 100 28 84 26 64 C46 70 58 86 60 110Z" fill="currentColor" opacity="0.85" />
-        <path d="M60 90 C80 80 92 62 94 42 C74 50 62 66 60 90Z" fill="currentColor" opacity="0.7" />
-        <path d="M60 60 C46 50 40 34 42 18 C56 28 62 42 60 60Z" fill="currentColor" opacity="0.55" />
-      </svg>
-      <div className="absolute inset-x-0 bottom-0 h-10 rounded-sm bg-forest" />
-      <div className="absolute bottom-10 left-1/2 h-14 w-24 -translate-x-1/2 rounded-b-3xl bg-gold" />
-    </div>
-  );
-}
-
 function IconChat() {
   return (
     <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -382,29 +403,32 @@ function IconChat() {
   );
 }
 
-function IconLeaf() {
+function Photo({
+  src,
+  alt,
+  className = "",
+  sizes,
+  position = "object-center",
+  eager = false,
+}: {
+  src: StaticImageData;
+  alt: string;
+  className?: string;
+  sizes: string;
+  position?: string;
+  eager?: boolean;
+}) {
   return (
-    <svg viewBox="0 0 32 32" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.3">
-      <path d="M6 26C6 14 14 6 27 5c0 13-8 21-21 21Z" />
-      <path d="M6 26 18 14" />
-    </svg>
-  );
-}
-
-function IconEye() {
-  return (
-    <svg viewBox="0 0 32 32" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.3">
-      <path d="M3 16s5-9 13-9 13 9 13 9-5 9-13 9S3 16 3 16Z" />
-      <circle cx="16" cy="16" r="4" />
-    </svg>
-  );
-}
-
-function IconHome() {
-  return (
-    <svg viewBox="0 0 32 32" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.3">
-      <path d="M5 14 16 5l11 9v13H5V14Z" />
-      <path d="M13 27v-8h6v8" />
-    </svg>
+    <div className={`relative overflow-hidden bg-sand ${className}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        placeholder="blur"
+        className={`object-cover ${position}`}
+        {...(eager ? { loading: "eager" as const, fetchPriority: "high" as const } : {})}
+      />
+    </div>
   );
 }
